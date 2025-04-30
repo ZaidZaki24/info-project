@@ -1,0 +1,8 @@
+Flask==3.0.3
+Flask-Talisman==1.1.0
+python-dotenv==1.0.1
+liboqs==0.9.1
+cryptography==42.0.5
+
+
+
