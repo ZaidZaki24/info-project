@@ -140,4 +140,103 @@ This software is provided for educational and demonstration purposes only. Use i
 
 
 ### Step-by-Step Setup
+
 1. Clone the repository
+git clone <repository-url>
+cd <project-directory>
+
+2. Create a virtual environment
+python -m venv venv
+source venv/bin/activate # On Windows: venv\Scripts\activate
+
+
+3. Install dependencies
+pip install flask flask-talisman python-dotenv pqcrypto_helpers
+
+
+
+4. Set up environment variables
+Create a .env file in the project root:
+SECRET_KEY=secret-key
+
+
+## Running the Application
+### Development Mode
+python app.py
+
+
+
+
+The application will be available at http://localhost:5000
+
+### Production Deployment
+For production deployment, consider using:
+- Gunicorn or uWSGI as WSGI server
+- Nginx as reverse proxy
+- Proper SSL certificate
+
+Example with Gunicorn:
+pip install gunicorn
+gunicorn -w 4 -b 0.0.0.0:5000 app:app
+
+
+
+
+## Project Structure
+project/
+├── app.py # Main Flask application
+├── .env # Environment variables
+├── requirements.txt # Python dependencies
+├── templates/
+│ └── index.html # Main web interface
+└── static/
+└── style.css # Styling
+
+
+
+## Security Notes
+
+- This is a demonstration application and should not be used for production security
+- The application uses Kyber-512 by default (via pqcrypto_helpers)
+- For production use, consider using the latest standardized versions (ML-KEM)
+- Always use HTTPS in production environments
+- Keep private keys secure and never expose them unnecessarily
+
+## About Post-Quantum Cryptography
+
+Post-quantum cryptography refers to cryptographic algorithms that are secure against attacks by quantum computers. Kyber is a key encapsulation mechanism (KEM) that has been selected by NIST for standardization.
+
+### Kyber Features:
+- **Lattice-based**: Security based on the hardness of lattice problems
+- **Efficient**: Relatively fast compared to other post-quantum schemes
+- **Standardized**: Part of NIST's Post-Quantum Cryptography standardization
+
+## Troubleshooting
+
+### Common Issues
+1. **ModuleNotFoundError: No module named 'pqcrypto_helpers'**
+
+2. **Import errors** - Ensure you're using the correct Python environment and all dependencies are installed
+
+3. **Connection refused** - Check if the port (5000) is available and the Flask app is running
+
+## License
+
+This project is provided for educational and demonstration purposes. Please check the licenses of the underlying cryptographic libraries for production use.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit pull requests or open issues for bugs and feature requests.
+
+## Disclaimer
+
+This software is provided for educational and demonstration purposes only. Use in production environments should be done with careful consideration of security requirements and proper cryptographic implementation practices.
+
+
+
+
+
+
+
+
+
